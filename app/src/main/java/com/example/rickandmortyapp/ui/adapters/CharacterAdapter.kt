@@ -1,30 +1,16 @@
 package com.example.rickandmortyapp.ui.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rickandmortyapp.data.remote.models.Character
 import com.example.rickandmortyapp.databinding.ItemCharacterBinding
-import androidx.recyclerview.widget.ListAdapter as ListAdapter
 
 
-class CharacterAdapter: ListAdapter<Character,CharacterAdapter.ViewHolder>(CharacterDiffutil()) {
-
-    private var list: ArrayList<Character> = ArrayList()
-
-
-
-    fun addList(list: ArrayList<Character>?) {
-        if (list != null) {
-            this.list = list
-        }
-
-    }
-
-
+class CharacterAdapter : ListAdapter<Character, CharacterAdapter.ViewHolder>(CharacterDiffutil()) {
 
     class ViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -45,7 +31,7 @@ class CharacterAdapter: ListAdapter<Character,CharacterAdapter.ViewHolder>(Chara
             )
         )
 
-    private class CharacterDiffutil : DiffUtil.ItemCallback<Character>(){
+    class CharacterDiffutil : DiffUtil.ItemCallback<Character>() {
         override fun areItemsTheSame(oldItem: Character, newItem: Character) =
             oldItem.id == newItem.id
 
@@ -59,6 +45,6 @@ class CharacterAdapter: ListAdapter<Character,CharacterAdapter.ViewHolder>(Chara
         holder.onBind(getItem(position))
     }
 
-    override fun getItemCount(): Int = list.size
+
 
 }

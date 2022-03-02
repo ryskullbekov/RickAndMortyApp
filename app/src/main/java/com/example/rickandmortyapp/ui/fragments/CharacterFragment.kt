@@ -22,12 +22,17 @@ class CharacterFragment : Fragment() {
     private val characterAdapter: CharacterAdapter = CharacterAdapter()
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCharacterBinding.inflate(inflater, container, false)
         return binding.root
+
+
+
 
     }
 
@@ -36,7 +41,12 @@ class CharacterFragment : Fragment() {
         binding.recycler.adapter = characterAdapter
         getData()
 
+
+
     }
+
+
+
 
 
 
@@ -50,11 +60,9 @@ class CharacterFragment : Fragment() {
 
                 }
                 is Resource.Success -> {
-                    characterAdapter.addList(it.data?.results)
+                    characterAdapter.submitList(it.data?.results)
                 }
             }
-
-
         })
     }
 

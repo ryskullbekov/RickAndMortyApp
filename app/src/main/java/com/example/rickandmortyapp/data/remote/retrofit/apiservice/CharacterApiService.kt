@@ -11,10 +11,10 @@ interface CharacterApiService {
     @GET("api/character/{id}")
     suspend fun fetchCharacterId(
         @Path("id") id: Int
-    ):Character
+    ): Character
 
     @GET("api/character")
-   suspend fun fetchCharacters(
-        @Query("page") page:Int
+    suspend fun fetchCharacters(
+        @Query("page") page: Int
     ): RickAndMortyResponse<Character>
 }
